@@ -12,6 +12,7 @@ import OTP from './OTP'
 import NewPass from './NewPass'
 
 const Stack = createStackNavigator();
+
 const styles = StyleSheet.create({
     headerStyle: {
       backgroundColor: '#2151A0',
@@ -31,24 +32,16 @@ const LoginStack = () => {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
       <Stack.Screen name="Register" component={Register} options={{ headerShown: false }}/>
       <Stack.Screen name="Result" component={Result}/>
-      <Stack.Screen name="ForgetStack" component={ForgetStack} options={{ headerShown: false }}/>
-      
-      
-
-         
+      <Stack.Screen name="ForgetStack" component={ForgetStack} options={{ headerShown: false }}/>         
     </Stack.Navigator>
   );
 };
 const ForgetStack = () => {
     return (
       <Stack.Navigator>
-        
         <Stack.Screen name="ForgetPass" component={ForgetPass} options={{ headerShown: false }}/>
         <Stack.Screen name="OTP" component={OTP} options={{ headerShown: false }}/>
         <Stack.Screen name="NewPass" component={NewPass} options={{ headerShown: false }}/>
-        
-  
-           
       </Stack.Navigator>
     );
   };
@@ -57,7 +50,7 @@ const HomeStack = () => {
       <Stack.Navigator>
         <Stack.Screen name="HomeScreen" component={HomeScreen}
         options={{
-            title: 'App Name',
+            title: 'Medical Image Diagnosis',
             headerLeft: null,
             headerStyle: styles.headerStyle,
             headerTitleStyle: styles.headerTitleStyle,
@@ -68,9 +61,6 @@ const HomeStack = () => {
             headerStyle: styles.headerStyle,
             headerTitleStyle: styles.headerTitleStyle,
           }}/>
-        
-  
-           
       </Stack.Navigator>
     );
   };
@@ -79,10 +69,8 @@ const App = () => {
     <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="OpenScreen">
         <Stack.Screen name="OpenScreen" component={LoginStack} options={{ headerShown: false }} />
-        
         <Stack.Screen name="HomeStack" component={HomeStack} options={{ headerShown: false }}  />
         <Stack.Screen name="ForgetStack" component={ForgetStack} options={{ headerShown: false }}/>
-        
       </Stack.Navigator>
     </NavigationContainer>
   );

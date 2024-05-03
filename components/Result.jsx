@@ -1,13 +1,55 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet , Image } from 'react-native';
+import React from 'react';
 
 const Result = ({ route }) => {
-  const { res } = route.params; // Access prediction result from navigation params
+  const { res } = route.params;
   return (
-    <View style={{display:'flex', alignItems:'center', justifyContent:'center' ,}}>
-      <Text>Result: {res}</Text>
+    <View style={{display:'flex', alignItems:'center', backgroundColor:'#2151A0', height:'100%'}}>
+    <View style={{backgroundColor:'#2151A0', width:'100%' , display:'flex', alignItems:'center', justifyContent:'center'}}>
+       <Image source={require('../assets/result.png')} style={{height: 300, width:300}} />
     </View>
-  )
-}
+    <View style={{ gap:10}}>
 
-export default Result
+      {res === 'COVID-19' ? (
+        <>
+          <View style={{backgroundColor:'#dedede' , borderRadius:10 , padding:20}}>
+            <Text style={{fontSize:20 , fontWeight:600}}>Result :</Text>
+            <View>
+              <Text style={{fontSize: 15 , fontWeight:400}}>The Result for the Image is {res} Positive</Text>
+            </View>
+          </View>
+          <View style={{backgroundColor:'#dedede' , borderRadius:10 , padding:20}}>
+            <Text style={{fontSize:20 , fontWeight:600}}>Symptoms:</Text>
+              <View style={{paddingHorizontal:10}}>
+                <Text style={{fontSize: 15 , fontWeight:400}}>Fever or chills</Text>
+                <Text style={{fontSize: 15 , fontWeight:400}}>Cough</Text>
+                <Text style={{fontSize: 15 , fontWeight:400}}>Shortness of breath or difficulty breathing</Text>
+                <Text style={{fontSize: 15 , fontWeight:400}}>Fatigue</Text>
+              </View>
+          </View>
+          <View style={{backgroundColor:'#dedede' , borderRadius:10 , padding:20}}>
+            <Text style={{fontSize:20 , fontWeight:600}}>How to Cure it:</Text>
+            <View>
+              <Text style={{fontSize: 15 , fontWeight:400}}>Please Consult your Doctor</Text>
+            </View>
+          </View>
+        </>
+      ) : (
+        
+        
+        <View style={{gap:10}}>
+          <View style={{backgroundColor:'#dedede' , borderRadius:10 , padding:20}}>
+            <Text style={{fontSize:20 , fontWeight:600}}>Result :</Text>
+              <Text style={{fontSize: 15 , fontWeight:400}}>The Result for the Image is {res}</Text>
+            </View>
+            <View style={{backgroundColor:'#dedede' , borderRadius:10 , padding:20}}>
+              <Text style={{fontSize: 15 , fontWeight:400}}>You are a normal Person</Text>
+            </View>
+        </View>
+      )}
+    </View>
+  </View>
+  );
+};
+
+export default Result;

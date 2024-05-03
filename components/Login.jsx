@@ -8,8 +8,8 @@ const Login = ({ navigation }) => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:8000/login', {
-                username: phoneNumber, // Assuming the username is the phone number for login
+            const response = await axios.post('https://ml-models-2.onrender.com/login', {
+                phonenumber: phoneNumber, // Assuming the username is the phone number for login
                 password: password
             });
             console.log(response.data); // Log the response from the server
@@ -30,10 +30,10 @@ const Login = ({ navigation }) => {
                     <Text style={{ color: 'white', textAlign: 'flex-start', fontSize: 20, fontWeight: 700 }}>Login Here</Text>
                     <View style={{ paddingHorizontal: 10, gap: 10 }}>
                         <View>
-                            <Text style={{ fontSize: 15, fontWeight: 600, color: 'white' }}>Phone Number / Username</Text>
+                            <Text style={{ fontSize: 15, fontWeight: 600, color: 'white' }}>Phone Number</Text>
                             <TextInput
                                 style={{ height: 40, marginTop: 5, borderWidth: 0.8, fontSize: 10, padding: 10, backgroundColor: 'white', borderRadius: 5 }}
-                                placeholder='Enter Phone Number / Username'
+                                placeholder='Enter Phone Number'
                                 value={phoneNumber}
                                 onChangeText={text => setPhoneNumber(text)}
                             />
@@ -53,7 +53,7 @@ const Login = ({ navigation }) => {
                 </View>
                 <View style={{ gap: 30 }}>
                     <TouchableOpacity onPress={handleLogin} style={{ backgroundColor: "#174c70", height: 43, width: 301, borderRadius: 50, alignItems: 'center', justifyContent: 'center', display: 'flex' }}>
-                        <Text style={{ color: "white", fontSize: 15, fontFamily: 'poppins', fontWeight: 600 }}>Login</Text>
+                        <Text style={{ color: "white", fontSize: 15, fontWeight: 600 }}>Login</Text>
                     </TouchableOpacity>
                     <View style={{ justifyContent: 'flex-end', display: 'flex', alignItems: 'flex-end' }}>
                         <TouchableOpacity onPress={() => navigation.navigate('ForgetStack')}>

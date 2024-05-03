@@ -23,7 +23,7 @@ const ForgetPass = ({navigation}) => {
             </View>
             <View style={{gap:30}}>
                 <TouchableOpacity onPress={() => navigation.navigate('OTP')} style={[{ backgroundColor: "#174c70" , height: 43 , width: 301 , borderRadius: 50, alignItems: 'center', justifyContent:'center', display:'flex' }]}>
-                    <Text style={[{ color: "white" , fontSize: 15 , fontFamily: 'poppins', fontWeight:600 }]}>Send OTP</Text>
+                    <Text style={[{ color: "white" , fontSize: 15 , fontWeight:600 }]}>Send OTP</Text>
                 </TouchableOpacity>
                 <View style={[{justifyContent:'flex-end' , display:'flex' , alignItems:'flex-end',}]}>
                 

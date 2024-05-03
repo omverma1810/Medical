@@ -22,8 +22,8 @@ const HomeScreen = ({ navigation }) => {
             setImage(result.assets[0].uri);
         }
     };
+    
     const deleteImage = () => {
-        // Function to handle image deletion
         setImage(null);
         setShowDeleteIcon(false);
     };
@@ -37,16 +37,20 @@ const HomeScreen = ({ navigation }) => {
                 type: 'image/*',
             });
             formData.append('option', selectedOption);
-
-            const response = await axios.post('http://your_server_ip:8000/predict', formData, {
+            console.log(formData)
+            const response = await fetch(`https://ml-models-2.onrender.com/predict?option=${selectedOption}`, {
+                method: 'POST',
+                body: formData,
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-
-            console.log(response.data);
-            const res = response.data.predictions;
-            // Navigate to the Result screen
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const responseData = await response.json();
+            console.log(responseData);
+            const res = responseData.prediction;
             navigation.navigate('Result', { res });
         } catch (error) {
             console.error('Error predicting:', error);
@@ -93,13 +97,12 @@ const HomeScreen = ({ navigation }) => {
                         <Picker
                             selectedValue={selectedOption}
                             onValueChange={(itemValue, itemIndex) => setSelectedOption(itemValue)}
-
                         >
                             <Picker.Item label={selectedOption ? selectedOption : 'Select modal'} value={null} />
                             <Picker.Item label="Benford's feature extraction" value="benfordsXgb" />
                             <Picker.Item label="T-test for feature extraction" value="plainttestXgb" />
                             <Picker.Item label="KS - test for feature extraction" value="kstestsvm" />
-                            <Picker.Item label="K - test for feature extraction" value="ktestsvn" />
+                            <Picker.Item label="K - test for feature extraction" value="ktestsvm" />
                             <Picker.Item label="iterative T-test" value="iterativettXgb" />
                             <Picker.Item label="iterative Z-test" value="iterativezzXgb" />
                             <Picker.Item label="iterative T-Z test" value="iterativetzXbg" />
@@ -108,7 +111,7 @@ const HomeScreen = ({ navigation }) => {
                     </View>
                 </View>
                 <TouchableOpacity onPress={handlePredict} style={[{ backgroundColor: "#174c70", height: 43, width: 301, borderRadius: 50, alignItems: 'center', justifyContent: 'center', display: 'flex' }]}>
-                    <Text style={[{ color: "white", fontSize: 15, fontFamily: 'poppins', fontWeight: 600 }]}>Predict</Text>
+                    <Text style={[{ color: "white", fontSize: 15, fontWeight: 600 }]}>Predict</Text>
                 </TouchableOpacity>
             </View>
         </View>
