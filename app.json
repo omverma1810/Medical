@@ -22,14 +22,14 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.omverma1810.medical"
+      "package": "com.omverma.medical-app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "27bbeb59-693f-42ad-a222-402b7ed07059"
+        "projectId": "488d96da-bf1b-465f-ae18-87f6738122a5"
       }
     }
   }
